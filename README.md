@@ -3,7 +3,9 @@
 ## Intro
 
 Project specification: PSZ_Projekat_2018.pdf
+
 [Application](https://pszetf.herokuapp.com)
+
 **DO NOT CLICK CALCULATE ON HEROKU (HEROKU USE ONLY 512MB RAM)**
 
 I Phase
