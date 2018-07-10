@@ -11,17 +11,17 @@ I Phase
     - urls.csv
     ### Code
     crawler.js
-II Phase  -
+II Phase
     ### Result
     [TABLES](https://pszetf.herokuapp.com)
     ### Code
     - query.js
-III Phase -
-    ### Result
+III Phase
+    ## Result
     [GRAPHS](https://pszetf.herokuapp.com)
     ### Code
     - query.js
-IV Phase  -
+IV Phase
     ### Result
     - in ***results*** folder - format: PARAM-#CLUSTER-CLUSTER-DATE
     - [KMERS](https://pszetf.herokuapp.com/kmeans)
@@ -49,6 +49,6 @@ HTML
 ```
 
 ## TODO
-- [] Improve frontend
-- [] Use more parameters for clustering
-- [] Optimize code
+- [ ] Improve frontend
+- [ ] Use more parameters for clustering
+- [ ] Optimize code
