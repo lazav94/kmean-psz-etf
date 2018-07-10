@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PSZ</title>
+  <meta name="description" content="Bootstrap.">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <style>
+    .col-xs-offset-4 {
+      border: 1px solid #aaa;
+      border-radius: 15px;
+      background-color: rgb(114, 221, 254)
+    }
+  </style>
+</head>
+
+
+<body style="margin:20px auto;">
+
+  <nav class="navbar navbar-default navbar-fixed-top" style="height:  8%;background-color: rgb(131,249,1,1)">
+    <a class="navbar-brand" href="#" style "margin-top: -30%">
+      <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" width="50" height="50" alt="">
+    </a>
+    <div style="margin-top: 1%">
+      <a class="btn btn-default btn-success" href="#genreTable">Genre Table</a>
+      <a class="btn btn-default btn-success" href="#table1">Style Table</a>
+      <a class="btn btn-default btn-success" href="#top10Albums">Top 10 Albums</a>
+      <a class="btn btn-default btn-success" href="#top100Songs">Top 100 Songs</a>
+      <a class="btn btn-default btn-success" href="#creditsTable">Top 50 Credits</a>
+      <a class="btn btn-default btn-success" href="#chart1">Decade stats</a>
+      <a class="btn btn-default btn-success" href="#chart2">Genre stats</a>
+      <a class="btn btn-default btn-success" href="#chart3">Dutartion stats</a>
+      <a class="btn btn-default btn-success" href="#chart4">Letter stats</a>
+      <a class="btn btn-default btn-success" href="#chart5"># of ganre stats</a>
+      <a class="btn btn-default btn-primary" href="/downloaddb">Download DB</a>
+      <a class="btn btn-default btn-danger" href="/kmeans">K-MEANS</a>
+
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-default navbar-fixed-bottom" style="height:  1%;background-color: rgb(224,251,1,1)">
+    <div style="margin-top: 1%;text-align: center">
+      Pronalazenje skrivenog znanja &copy; Lazar Vasic 2017/3011
+    </div>
+  </nav>
+
+  <br>
+  <div class='row' style="margin-top: 3%">
+    <div id="table1" class='col-xs-5'>
+      <div class="container" style="display: inline">
+        <div class="row header" style="text-align:center;color:green">
+          <h3>STYLE</h3>
+        </div>
+        <table id="styleTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Style</th>
+              <th>Numer of albums</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < tables.style.length; i++) { %>
+              <tr>
+                <td>
+                  <%=Object.keys(tables.style[i])[0] %>
+                </td>
+                <td>
+                  <%= Object.values(tables.style[i])[0] %>
+                </td>
+              </tr>
+              <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class='col-xs-5'>
+      <div class="container" style="display: inline">
+        <div class="row header" style="text-align:center;color:green">
+          <h3>GENRE</h3>
+        </div>
+        <table id="genreTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Genre</th>
+              <th>Numer of albums</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < tables.genre.length; i++) { %>
+              <tr>
+                <td>
+                  <%=Object.keys(tables.genre[i])[0] %>
+                </td>
+                <td>
+                  <%= Object.values(tables.genre[i])[0] %>
+                </td>
+              </tr>
+              <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-8'>
+      <div class="container" style="display: inline">
+        <div class="row header" style="text-align:center;color:green">
+          <h3>TOP 10 ALBUMS (BY # OF VERSION)</h3>
+        </div>
+        <table id="top10Albums" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Artist</th>
+              <th>Title</th>
+              <th>Released</th>
+              <th>Style</th>
+              <th>Genre</th>
+              <th># of Tracks</th>
+              <th># of Versions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0, j = 1; i < tables.topVersions.length; i++) { %>
+              <tr>
+                <td>
+                  <% if(i !== 0 && tables.topVersions[i].versions !== tables.topVersions[i - 1].versions) j++ %>
+                    <%= j %>
+                </td>
+                <td>
+                  <a href="<%=tables.topVersions[i].url %>">
+                    <%=tables.topVersions[i].title %>
+                  </a>
+                </td>
+                <td>
+                  <a href="<%=tables.topVersions[i].url %>">
+                    <%=tables.topVersions[i].artist %>
+                  </a>
+                </td>
+                <td>
+                  <%=tables.topVersions[i].released %>
+                </td>
+                <td>
+                  <%=tables.topVersions[i].style %>
+                </td>
+                <td>
+                  <%=tables.topVersions[i].genre %>
+                </td>
+                <td>
+                  <%=tables.topVersions[i].numberOfTracks %>
+                </td>
+                <td>
+                  <%=tables.topVersions[i].versions %>
+                </td>
+              </tr>
+              <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-8'>
+      <div class="container" style="display: inline">
+        <div class="row header" style="text-align:center;color:green">
+          <h3>TOP 100 SONG (BY # OF ALBUMS)</h3>
+        </div>
+        <table id="top100Songs" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Song</th>
+              <th># albums</th>
+              <th>Albums</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < tables.topSongs.length; i++) { %>
+              <tr>
+                <td>
+                  <%= i + 1 %>
+                </td>
+                <td>
+                  <%= Object.keys(tables.topSongs[i])[0] %>
+                </td>
+                <td>
+                  <%= Object.values(tables.topSongs[i])[0].length %>
+                </td>
+                <td>
+                  <% for(let j = 0; j < Object.values(tables.topSongs[i])[0].length; j++) { %>
+                    <a href="<%= Object.values(tables.topSongs[i])[0][j].url %>">
+                      <%= j + 1 %>. &nbsp; Contry:
+                        <%= Object.values(tables.topSongs[i])[0][j].country %> &nbsp; Released:
+                          <%= Object.values(tables.topSongs[i])[0][j].released %> &nbsp; Style:
+                            <%= Object.values(tables.topSongs[i])[0][j].style %> &nbsp; Genre:
+                              <%= Object.values(tables.topSongs[i])[0][j].genre %> &nbsp; Format:
+                              <%= Object.values(tables.topSongs[i])[0][j].format %>
+                    </a>
+                    <!-- Format: <%= Object.values(tables.topSongs[i])[0][j].format %> -->
+                    <br>
+                    <% }%>
+                </td>
+              </tr>
+              <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-8'>
+      <div class="container" style="display: inline">
+        <div class="row header" style="text-align:center;color:green">
+          <h3>TOP 50 Credist</h3>
+        </div>
+        <table id="creditsTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>All credits</th>
+              <th>Vocals</th>
+              <th>Writing & Arangement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < tables.allCredits.length; i++) { %>
+              <tr>
+                <td>
+                  <%= i + 1 %>
+                </td>
+                <td>
+                  <%= Object.keys(tables.allCredits[i])[0].replace(/\;/g, '.') %>:
+                    <%= Object.values(tables.allCredits[i])[0] %>
+                </td>
+                <td>
+                  <%= Object.keys(tables.vocalsCredits[i])[0].replace(/\;/g, '.') %>:
+                    <%= Object.values(tables.vocalsCredits[i])[0] %>
+                </td>
+                <td>
+                  <%= Object.keys(tables.waCredist[i])[0].replace(/\;/g, '.') %>:
+                    <%= Object.values(tables.waCredist[i])[0] %>
+                </td>
+
+              </tr>
+              <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#styleTable').dataTable();
+      $('#genreTable').dataTable();
+      $('#top10Albums').dataTable();
+      $('#top100Songs').dataTable();
+      $('#creditsTable').dataTable();
+
+    });
+  </script>
+
+  <script src="chart.js"></script>
+
+  <div class='row' id="chart1">
+    <div class='col-xs-5 col-xs-offset-4'>
+      <canvas id="decadeChart" width="200" height="200"></canvas>
+      Broj albuma po dekadama (1950-1959, 1960-1969, 1970-1979, 1980-1989, 1990-1999, 2000-2009, 2010-2018)
+    </div>
+  </div>
+
+  <div class="row" id="chart2">
+    <div class='col-xs-5 col-xs-offset-4'>
+      <canvas id="genreChart" width="200" height="200"></canvas>
+      6 najzastupljenijih žanrova i broj albuma koji su izdati u svakom od tih žanrova
+    </div>
+  </div>
+
+  <div class="row3" id="chart3">
+    <div class='col-xs-5 col-xs-offset-4'>
+      <canvas id="durationChart" width="200" height="200"></canvas>
+      Broj pesama prema trajanju (do 90 sekundi, 91-180, 181-240, 241-300, 301-360, 361 sekunda i više)
+    </div>
+  </div>
+
+  <div class='row' id="chart4">
+    <div class='col-xs-5 col-xs-offset-4'>
+      <canvas id="cyrillicChart" width="200" height="200"></canvas>
+      Broj (i procentualni odnos) albuma čiji su naslovi napisani ćiriličnim pismom i latiničnim pismom
+    </div>
+  </div>
+
+  <div class='row' id="chart5">
+    <div class='col-xs-5 col-xs-offset-4'>
+      <canvas id="genreCountChart" width="200" height="200"></canvas>
+      Broj (i procentualni odnos) albuma koji pripadaju: samo jednom žanru, ▪ 2 žanra, ▪ 3 žanra, ▪ 4 ili više žanrova.
+    </div>
+  </div>
+  <br>
+  <br>
+</body>
+
+</html>

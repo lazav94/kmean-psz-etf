@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PSZ</title>
+    <meta name="description" content="Bootstrap.">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body style="margin:20px auto;">
+    <link rel="stylesheet" type="text/css" href="kmeans.css">
+
+    <nav class="navbar navbar-default navbar-fixed-top" style="height:  8%;background-color: rgb(131,249,1,1)">
+        <a class="navbar-brand" href="#" style "margin-top: -30%">
+            <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" width="50" height="50" alt="">
+        </a>
+        <div style="margin-top: 1%">
+            <a class="btn btn-default btn-success" href="#genreTable">Genre Table</a>
+            <a class="btn btn-default btn-success" href="#table1">Style Table</a>
+            <a class="btn btn-default btn-success" href="#top10Albums">Top 10 Albums</a>
+            <a class="btn btn-default btn-success" href="#top100Songs">Top 100 Songs</a>
+            <a class="btn btn-default btn-success" href="#creditsTable">Top 50 Credits</a>
+            <a class="btn btn-default btn-success" href="#chart1">Decade stats</a>
+            <a class="btn btn-default btn-success" href="#chart2">Genre stats</a>
+            <a class="btn btn-default btn-success" href="#chart3">Dutartion stats</a>
+            <a class="btn btn-default btn-success" href="#chart4">Letter stats</a>
+            <a class="btn btn-default btn-success" href="#chart5"># of ganre stats</a>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="height:  1%;background-color: rgb(224,251,1,1)">
+        <div style="margin-top: 1%;text-align: center">
+            Pronalazenje skrivenog znanja &copy; Lazar Vasic 2017/3011
+        </div>
+    </nav>
+    <br>
+
+
+    <form method="POST" action="calc">
+        <div class="col-md-6">
+            <div style="width:20%;margin-top: 10%;margin-left: 1%;text-align: center">
+                Select param K:
+                <br>
+            </div>
+            <div class="input-group" style="width:20%;margin-top: 2%;margin-left: 2%;text-align: center">
+
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="k">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+                <input type="text" name="k" class="form-control input-number" value="<%= k %>" min="1" max="100" onkeydown="this.value=this.value.replace(/[^\d]/,'')">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="k">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+            <div class="col-md-6">
+                <br>
+                <h4>Select input:</h4>
+
+                <div class="funkyradio">
+                    <fieldset>
+                        <div class="funkyradio-success">
+                            <input type="radio" name="param" id="radio1" value="style" <%= param == 'style' ?'checked': ''%> />
+                            <label for="radio1">Style</label>
+                        </div>
+                        <div class="funkyradio-success">
+                            <input type="radio" name="param" id="radio2" value="genre" <%= param == 'genre' ?'checked': ''%>/>
+                            <label for="radio2">Genre</label>
+                        </div>
+                        <div class="funkyradio-success" style="display: none">
+                            <input type="radio" name="param" id="radio3" value="#style" <%= param == '#style' ?'checked': ''%>/>
+                            <label for="radio3">#Style</label>
+                        </div>
+                        <div class="funkyradio-success" style="display: none">
+                            <input type="radio" name="param" id="radio4" value="#genre" <%= param == '#genre' ?'checked': ''%>  />
+                            <label for="radio4">#Genre</label>
+                        </div>
+                        <div class="funkyradio-success">
+                            <input type="radio" name="param" id="radio5" value="released" <%= param == 'released' ?'checked': ''%>/>
+                            <label for="radio5">Released(year)</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <button class="btn btn-success" type="submit" value="Calculate" style="margin-top: 5%"> Calculate</button>
+            </div>
+    </form>
+
+    <%= response %>
+
+    <script src="kmeans.js"></script>
+
+
+
+</body>
+
+</html>

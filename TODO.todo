@@ -1,0 +1,22 @@
+[x] Uzeti sve urlove
+[x] Izbaciti iste ako ih ima
+[x] Pronaci broj verzija albuma https://www.discogs.com/James-Holden-Balance-005/master/535918
+[x] 10 najboljih albuma
+
+
+[x] Broj albuma po dekadama (1950-1959, 1960-1969, 1970-1979, 1980-1989, 1990-1999, 2000-2009, 2010-2018)
+[x] 6 najzastupljenijih žanrova i broj albuma koji su izdati u svakom od tih žanrova
+[x] Broj pesama prema trajanju (do 90 sekundi, 91-180, 181-240, 241-300, 301-360, 361 sekunda i više)
+[x] Broj (i procentualni odnos) albuma čiji su naslovi napisani ćiriličnim pismom i latiničnim pismom
+[x] Broj (i procentualni odnos) albuma koji pripadaju:
+[x] samo jednom žanru, ▪ 2 žanra, ▪ 3 žanra, ▪ 4 ili više žanrova.
+
+
+[x] Prikaz 10 najboljih rezultate (rank) treba da ide nekad 1 1 2 3 3 posto vise njih dele mesto
+[x] Izvuci format
+[x] testiraj ove kojima je duration i track razlicit
+[x] stavi ovo u blacklist ('https://www.discogs.com/Etu%C5%A1ka-Poljakovi%C4%87-Milica-Manojlovi%C4%87-Narodne-Igre-Jugoslavije/release/3525342');
+[x] ubaci nekako country ako spajam listu nece da sljaka
+
+
+node  --max_old_space_size=4096   ./ ./server/ ./server/controllers/*

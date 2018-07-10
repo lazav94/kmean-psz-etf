@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+  head
+    title Jade
+    script(type='text/javascript').
+      foo = true;
+      bar = function () {};
+      if (foo) {
+      bar(1 + 5)
+      }
+  body
+    table#table(data-show-header='true', data-pagination='true', data-id-field='name', data-page-list='[5, 10, 25, 50, 100, ALL]', data-page-size='5')
+      thead
+        tr
+          th(data-field='name', data-formatter='nameFormatter') Name
+          th(data-field='stargazers_count', data-formatter='starsFormatter') Stars
+          th(data-field='forks_count', data-formatter='forksFormatter') Forks
+          th(data-field='description') Description
+      tbody

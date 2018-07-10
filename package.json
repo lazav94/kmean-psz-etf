@@ -1,0 +1,35 @@
+{
+  "name": "psz",
+  "version": "1.0.0",
+  "description": "Project for university Machine Learning project",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "git add . && git commit -m \"🚀\" && git push heroku master && heroku logs -t -s app",
+    "start": "node server"
+  },
+  "author": "Lazar Vasic 3011/2017",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chart.js": "^2.7.2",
+    "cheerio": "^1.0.0-rc.2",
+    "crawler": "^1.1.4",
+    "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
+    "execution-time": "^1.2.0",
+    "express": "^4.16.3",
+    "kmeans": "0.0.1",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "mongoose": "^5.1.6",
+    "node-kmeans": "^1.1.8",
+    "node-tfidf": "0.0.2",
+    "path": "^0.12.7",
+    "pug": "^2.0.3",
+    "regex": "^0.1.1",
+    "request": "^2.87.0",
+    "util": "^0.11.0",
+    "winston": "^3.0.0"
+  }
+}
