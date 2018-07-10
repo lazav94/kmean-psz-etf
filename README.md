@@ -1,5 +1,5 @@
-# Crawler, Scraper Music Website and use KMeans ![etf](http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif "ETF")
-http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif
+# Crawler, Scraper Music Website and use KMeans ![etf](http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif "ETF") { width: 20px; height: 20px; }
+
 ## Intro
 
 Project specification: PSZ_Projekat_2018.pdf
