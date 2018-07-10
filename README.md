@@ -1,4 +1,4 @@
-# Crawler, Scraper Music Website and use KMeans ![etf]{ width: 20px; height: 20px; }(http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif "ETF")
+# Crawler, Scraper Music Website and use KMeans <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" alt="etf" width="20px"/>
 
 ## Intro
 
