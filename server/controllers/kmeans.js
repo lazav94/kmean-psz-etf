@@ -41,24 +41,6 @@ const data = [{
 ];
 
 
-// const data = [
-//   {'company': 'Microsoft' , 'size': 91259, 'revenue': 60420},
-//   {'company': 'IBM' , 'size': 400000, 'revenue': 98787},
-//   {'company': 'Skype' , 'size': 700, 'revenue': 716},
-//   {'company': 'SAP' , 'size': 48000, 'revenue': 11567},
-//   {'company': 'Yahoo!' , 'size': 14000 , 'revenue': 6426 },
-// ];
-
-// var data = [
-//   {'size': 10,'revenue': 72},
-//   {'size':  12,  'revenue': 71},
-//   {'size':  15, 'revenue': 65},
-//   {'size': 08, 'revenue': 83},
-//   {'size': 11, 'revenue': 70}
-// ];
-
-// Create the data 2D-array (vectors) describing the data
-
 const getAllGenreNStyle = async () => {
   const genre = [];
   const style = [];
@@ -81,7 +63,7 @@ const getAllGenreNStyle = async () => {
 const tokenization = async (param) => {
   console.log('Start tokenized:', param);
   const all = param === 'style' ? style : genre;
-  console.log('ALL',all);
+  console.log('ALL', all);
 
 
   const albums = await Promise.all((await Album.find()).map(async album => {
@@ -98,7 +80,7 @@ const tokenization = async (param) => {
 
     // console.log('Token', token)
     album.token[param] = parseFloat(token);
-    if(typeof album.token[param] !== 'number'){
+    if (typeof album.token[param] !== 'number') {
       console.log(`OPA, ${album._id}, ${album.token[param]} ${typeof album.token[param]}`);
       // album.token[param] = 0;
     }
@@ -112,6 +94,17 @@ const tokenization = async (param) => {
 // tokenization('genre'); // 'genre'
 
 
+module.exports = year = async () => {
+
+  const albums = await Album.find();
+  await Promise.all(albums.map(async album => {
+    album.year = moment(album.released).year();
+    console.log(typeof album.year, album.year)
+    await album.save();
+  }));
+  console.log('Done: year');
+}
+// year();
 
 
 module.exports = runKmeans = (k, params) => {
@@ -119,17 +112,26 @@ module.exports = runKmeans = (k, params) => {
     try {
 
       console.log(`Start collecting data for kmeans: ${k}, param: ${params[0]}`);
-      const data = (await Album.find()).map(album => ({
+      const data = (await Album.find()).map(album => {
         // released: moment(album.released).year()
-        [params[0]]: album.token[params[0]]
-      }));
+        if (params[0] === 'released') {
+          return{
+            // [params[0]]: moment(album.released).year()
+             [params[0]]: album.year
+          }
+        } else {
+          return {
+            [params[0]]: album.token[params[0]]
+          }
+        }
+      });
       console.log('Done collecting', data.length);
 
       let vectors = new Array();
       for (let i = 0; i < data.length; i++) {
         vectors[i] = [];
         params.forEach(param => {
-          if(typeof data[i][param] !== 'number'){
+          if (typeof data[i][param] !== 'number') {
             console.log('h', data[i][param])
             data[i][param] = 0;
           }

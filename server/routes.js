@@ -2,6 +2,7 @@ const crawler = require('./controllers/crawler');
 const getStats = require('./controllers/query');
 const runKmeans = require('./controllers/kmeans');
 const fs = require('fs');
+const moment = require('moment');
 const Album = require('./models/album.model');
 
 
@@ -60,25 +61,15 @@ module.exports = app => {
             } else if (param === 'style') {
                 seachParam = 'token.style';
             } else if (param === 'released') {
-                // seachParam = {"released" : {$regex : ".*son.*"}});
-                seachParam = {
-                    "released": /.*son.*/
-                };
+                    seachParam = 'year'
             }
-            console.log(result[0]);
-            console.log('-------------')
-            console.log(result[0].cluster);
-            console.log('-------------')
-            console.log(result[0].cluster[0][0]);
-            console.log(result[0].cluster[1][0]);
-
-            console.log('-------------')
 
 
 
             let response = '';
             result.map((r, i) => {
-                response += `Cluster ${i}, size: ${r.cluster.length}, centroid: ${r.centroid[0]}<br>`;
+                response += `Cluster ${i}, size: ${r.cluster.length}, centroid: ${r.centroid[0]}
+                `;
             });
             console.log('Response', response)
 
@@ -95,17 +86,11 @@ module.exports = app => {
                         [seachParam]: c
                     })).map(a => {
 
-                        fs.appendFileSync(`${param}-${k}-${i+1}`, `ID: ${a._id} Title: ${a.title} Artist:${a.artists.join(', ')}\n`)
-                        // fs.appendFileSync(`${param}-${k}-${i+1}`, `ID: ${a.id}\n`)
+                        fs.appendFileSync(`./results/${param}-${k}-${i+1}-${moment().format('YYYY-MM-DD')}`, `ID: ${a._id} Title: ${a.title} Artist:${a.artists.join(', ')}\n`);
                     });
                 }));
             }));
             console.log('DONE!!!');
-            // res.setHeader('Content-disposition', `attachment; filename=${param}-${k}.csv`);
-            // res.set('Content-Type', 'text/csv');
-            // res.status(200).send(csv);
-
-
 
         } catch (error) {
             console.error(error);

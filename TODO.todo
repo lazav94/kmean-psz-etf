@@ -20,3 +20,9 @@
 
 
 node  --max_old_space_size=4096   ./ ./server/ ./server/controllers/*
+
+
+https://www.discogs.com/Boban-Rajovi%C4%87-Dito/release/12046909 - nema style
+
+
+mongoexport -h ds161780.mlab.com:61780 -d psz -c stats -u lazarvasic -ppsz30112017 -o stats.csv<
