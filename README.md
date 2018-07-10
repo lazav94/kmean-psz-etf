@@ -22,7 +22,7 @@ II Phase
 ---
 **Result**
 
-[TABLES](https://pszetf.herokuapp.com)
+- [TABLES](https://pszetf.herokuapp.com)
 
 **Code**
 - [query.js](https://github.com/lazav94/kmean-psz-etf/blob/master/server/controllers/query.js)
@@ -31,7 +31,7 @@ III Phase
 ---
 **Result**
 
-[GRAPHS](https://pszetf.herokuapp.com)
+- [GRAPHS](https://pszetf.herokuapp.com)
 
 ### Code
 
@@ -76,3 +76,4 @@ HTML
 - [ ] Improve frontend
 - [ ] Use more parameters for clustering
 - [ ] Optimize code
+
