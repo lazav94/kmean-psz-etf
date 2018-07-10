@@ -1,8 +1,10 @@
-# Crawler, Scraper Music Website and use KMeans <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" alt="etf" width="30px"/>
+# Crawler, Scraper Music Website and use KMeans <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" alt="etf" width="40px"/>
 
 ## Intro
 
 Project specification: PSZ_Projekat_2018.pdf
+[Application](https://pszetf.herokuapp.com)
+**DO NOT CLICK CALCULATE ON HEROKU (HEROKU USE ONLY 512MB RAM)**
 
 I Phase
 ---
