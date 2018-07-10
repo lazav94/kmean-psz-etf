@@ -6,28 +6,29 @@ Project specification: PSZ_Projekat_2018.pdf
 
 I Phase
 **Result (database files .csv)**
-- albums.csv (can be downloaded from app)
-- stats.csv
-- urls.csv
+- [albums.csv](https://github.com/lazav94/kmean-psz-etf/blob/master/albums.csv) (can be downloaded from app)
+- [stats.csv](https://github.com/lazav94/kmean-psz-etf/blob/master/stats.csv)
+- [urls.csv](https://github.com/lazav94/kmean-psz-etf/blob/master/url.csv)
 **Code**
-crawler.js
+- [crawler.js](https://github.com/lazav94/kmean-psz-etf/blob/master/server/controllers/crawler.js)
 II Phase
 **Result**
 [TABLES](https://pszetf.herokuapp.com)
 **Code**
-- query.js
+- [query.js]
 III Phase
 **Result**
 [GRAPHS](https://pszetf.herokuapp.com)
 ### Code
-- query.js
+- [query.js](https://github.com/lazav94/kmean-psz-etf/blob/master/server/controllers/query.js)
 IV Phase
 **Result**
 - in ***results*** folder - format: PARAM-#CLUSTER-CLUSTER-DATE
 - [KMERS](https://pszetf.herokuapp.com/kmeans)
 **Code**
-- kmers.js
-- routes.js
+- [kmeans.js](https://github.com/lazav94/kmean-psz-etf/blob/master/server/controllers/kmeans.js)
+- [routes.js](https://github.com/lazav94/kmean-psz-etf/blob/master/server/routes.js)
+
 **DO NOT CLICK CALCULATE ON HEROKU (HEROKU USE ONLY 512MB RAM)**
 
 ## Instaling and Running
