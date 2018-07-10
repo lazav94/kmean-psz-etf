@@ -1,4 +1,4 @@
-# Crawler, Scraper Music Website and use KMeans <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" alt="etf" width="20px"/>
+# Crawler, Scraper Music Website and use KMeans <img src="http://neurel.etf.bg.ac.rs/NEUREL%202014/Master/images/sponzori/etf.gif" alt="etf" width="30px"/>
 
 ## Intro
 
